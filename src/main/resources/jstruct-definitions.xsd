@@ -60,6 +60,7 @@
 
             <xsd:attribute name="type" type="type" use="required" />
             <xsd:attribute name="condition" type="condition"/>
+            <xsd:attribute name="dynamic" type="xsd:boolean" />
         </xsd:complexType>
     </xsd:element>
 
