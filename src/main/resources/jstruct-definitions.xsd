@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="def" xmlns="def"
+<xsd:schema targetNamespace="jstruct-definitions" xmlns="jstruct-definitions"
            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-    <xsd:simpleType name="type" xmlns="def" final="restriction">
+    <xsd:simpleType name="type" final="restriction">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="boolean" />
             <xsd:enumeration value="byte" />
@@ -30,7 +30,7 @@
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="order" xmlns="def" final="restriction">
+    <xsd:simpleType name="order" final="restriction">
         <xsd:restriction base="xsd:string">
             <!-- ByteOrder.BIG -->
             <xsd:enumeration value="big" />
@@ -41,7 +41,7 @@
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="condition" xmlns="def" final="restriction">
+    <xsd:simpleType name="condition" final="restriction">
         <xsd:restriction base="xsd:string">
             <!-- TODO: add restriction -->
             <xsd:pattern value="" />

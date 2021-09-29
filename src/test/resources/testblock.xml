@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definition xmlns="def"
+<definition xmlns="jstruct-definitions"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="def jstruct-definitions.xsd">
+             xsi:schemaLocation="jstruct-definitions jstruct-definitions.xsd">
 
     <block name="test1">
         <element name="boolean" offset="0" length="1" type="boolean"/>
