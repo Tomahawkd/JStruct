@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="def" xmlns="def"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:simpleType name="type" xmlns="def" final="restriction">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="boolean" />
+            <xsd:enumeration value="byte" />
+            <!-- short -->
+            <xsd:enumeration value="int2" />
+            <!-- int -->
+            <xsd:enumeration value="int4" />
+            <!-- long -->
+            <xsd:enumeration value="int8" />
+            <!-- int -->
+            <xsd:enumeration value="uint2" />
+            <!-- long -->
+            <xsd:enumeration value="uint4" />
+            <!-- long TODO: should be BigInteger -->
+            <xsd:enumeration value="uint8" />
+            <!-- java.math.BigInteger -->
+            <xsd:enumeration value="biginteger" />
+            <!-- byte[] -->
+            <xsd:enumeration value="bytearray" />
+            <!-- ignore bytes in parsing -->
+            <xsd:enumeration value="padding" />
+            <!-- length type for a block -->
+            <xsd:enumeration value="length" />
+            <xsd:enumeration value="string" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="order" xmlns="def" final="restriction">
+        <xsd:restriction base="xsd:string">
+            <!-- ByteOrder.BIG -->
+            <xsd:enumeration value="big" />
+            <!-- ByteOrder.LITTLE -->
+            <xsd:enumeration value="little" />
+            <!-- ByteOrder.nativeOrder() -->
+            <xsd:enumeration value="default" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="condition" xmlns="def" final="restriction">
+        <xsd:restriction base="xsd:string">
+            <!-- TODO: add restriction -->
+            <xsd:pattern value="" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- definition elements -->
+    <xsd:element name="element">
+        <xsd:complexType>
+            <xsd:attribute name="name" type="xsd:string" use="required" />
+            <!-- length relevant values  -->
+            <xsd:attribute name="offset" type="xsd:unsignedInt" use="required" />
+            <xsd:attribute name="length" type="xsd:unsignedInt" />
+            <xsd:attribute name="minLength" type="xsd:unsignedInt" />
+            <xsd:attribute name="maxLength" type="xsd:unsignedInt" />
+
+            <xsd:attribute name="type" type="type" use="required" />
+            <xsd:attribute name="condition" type="condition"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="block">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="element" />
+                <xsd:element ref="block" />
+            </xsd:choice>
+            <!-- need to be validate in Java -->
+            <xsd:attribute name="name" type="xsd:string" />
+            <xsd:attribute name="ref" type="xsd:string" />
+            <xsd:attribute name="byteOrder" type="order" default="default" />
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- definition for parsing -->
+    <xsd:element name="sequence">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="block" />
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required" />
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- root -->
+    <xsd:element name="definition">
+        <xsd:complexType>
+            <xsd:choice maxOccurs="unbounded">
+                <xsd:element ref="block" />
+                <xsd:element ref="sequence" />
+            </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
