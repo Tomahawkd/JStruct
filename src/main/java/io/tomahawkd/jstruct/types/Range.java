@@ -2,23 +2,23 @@ package io.tomahawkd.jstruct.types;
 
 public class Range {
 
-    private final long start;
-    private final long length;
+    private final int start;
+    private final int length;
 
-    public Range(long start, long length) {
+    public Range(int start, int length) {
         this.start = start;
         this.length = length;
     }
 
-    public long start() {
+    public int start() {
         return start;
     }
 
-    public long length() {
+    public int length() {
         return length;
     }
 
-    public long end() {
+    public int end() {
         return start + length;
     }
 }
