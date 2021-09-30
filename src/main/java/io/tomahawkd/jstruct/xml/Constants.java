@@ -15,7 +15,6 @@ public class Constants {
     public static final String TYPE_UINT8 = "uint8";
     public static final String TYPE_BIGINT = "biginteger";
     public static final String TYPE_BYTEARRAY = "bytearray";
-    public static final String TYPE_PADDING = "padding";
     public static final String TYPE_LENGTH = "length";
     public static final String TYPE_STRING = "string";
 
@@ -50,6 +49,7 @@ public class Constants {
     public static final String PADDING_MINLENGTH = GENERAL_MINLENGTH;
     public static final String PADDING_MAXLENGTH = GENERAL_MAXLENGTH;
     public static final String PADDING_ALIGN = "align";
+    public static final String PADDING_DYNAMIC = "dynamic";
 
     // choices
     public static final String CHOICES = "choices";
