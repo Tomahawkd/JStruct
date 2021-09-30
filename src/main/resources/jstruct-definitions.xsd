@@ -22,8 +22,6 @@
             <xsd:enumeration value="biginteger" />
             <!-- byte[] -->
             <xsd:enumeration value="bytearray" />
-            <!-- ignore bytes in parsing -->
-            <xsd:enumeration value="padding" />
             <!-- length type for a block -->
             <xsd:enumeration value="length" />
             <xsd:enumeration value="string" />
@@ -53,8 +51,9 @@
         <xsd:complexType>
             <xsd:attribute name="name" type="xsd:string" use="required" />
             <!-- length relevant values  -->
-            <xsd:attribute name="offset" type="xsd:unsignedInt" use="required" />
+            <xsd:attribute name="offset" type="xsd:unsignedInt" />
             <xsd:attribute name="length" type="xsd:unsignedInt" />
+            <xsd:attribute name="lengthRef" type="xsd:string" />
             <xsd:attribute name="minLength" type="xsd:unsignedInt" />
             <xsd:attribute name="maxLength" type="xsd:unsignedInt" />
 
@@ -64,10 +63,34 @@
         </xsd:complexType>
     </xsd:element>
 
+    <xsd:element name="padding">
+        <xsd:complexType>
+            <xsd:attribute name="offset" type="xsd:unsignedInt" />
+            <xsd:attribute name="length" type="xsd:unsignedInt" />
+            <xsd:attribute name="minLength" type="xsd:unsignedInt" />
+            <xsd:attribute name="maxLength" type="xsd:unsignedInt" />
+            <xsd:attribute name="dynamic" type="xsd:boolean" />
+            <xsd:attribute name="align" type="xsd:unsignedInt" />
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="choices">
+        <xsd:complexType>
+            <xsd:sequence maxOccurs="unbounded">
+                <xsd:element ref="block" />
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required" />
+            <xsd:attribute name="offset" type="xsd:unsignedInt" />
+            <xsd:attribute name="identifier" type="xsd:string" />
+        </xsd:complexType>
+    </xsd:element>
+
     <xsd:element name="block">
         <xsd:complexType>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
                 <xsd:element ref="element" />
+                <xsd:element ref="padding" />
+                <xsd:element ref="choices" />
                 <xsd:element ref="block" />
             </xsd:choice>
             <!-- need to be validate in Java -->
