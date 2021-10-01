@@ -54,7 +54,7 @@
             <xsd:attribute name="offset" type="xsd:unsignedInt" />
             <xsd:attribute name="length" type="xsd:unsignedInt" />
             <xsd:attribute name="lengthRef" type="xsd:string" />
-            <xsd:attribute name="minLength" type="xsd:unsignedInt" />
+            <xsd:attribute name="minLength" type="xsd:unsignedInt" default="0" />
             <xsd:attribute name="maxLength" type="xsd:unsignedInt" />
 
             <xsd:attribute name="type" type="type" use="required" />
@@ -67,7 +67,7 @@
         <xsd:complexType>
             <xsd:attribute name="offset" type="xsd:unsignedInt" />
             <xsd:attribute name="length" type="xsd:unsignedInt" />
-            <xsd:attribute name="minLength" type="xsd:unsignedInt" />
+            <xsd:attribute name="minLength" type="xsd:unsignedInt" default="0" />
             <xsd:attribute name="maxLength" type="xsd:unsignedInt" />
             <xsd:attribute name="dynamic" type="xsd:boolean" />
             <xsd:attribute name="align" type="xsd:unsignedInt" />
@@ -86,7 +86,7 @@
     </xsd:element>
 
     <xsd:element name="block">
-        <xsd:complexType>
+        <xsd:complexType mixed="true">
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
                 <xsd:element ref="element" />
                 <xsd:element ref="padding" />
