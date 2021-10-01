@@ -29,6 +29,7 @@ public class Constants {
     private static final String GENERAL_LENGTH = "length";
     private static final String GENERAL_MINLENGTH = "minLength";
     private static final String GENERAL_MAXLENGTH = "maxLength";
+    private static final String GENERAL_LENGTHREF = "lengthRef";
 
     // elements
     public static final String ELEMENT = "element";
@@ -37,7 +38,7 @@ public class Constants {
     public static final String ELEMENT_LENGTH = GENERAL_LENGTH;
     public static final String ELEMENT_MINLENGTH = GENERAL_MINLENGTH;
     public static final String ELEMENT_MAXLENGTH = GENERAL_MAXLENGTH;
-    public static final String ELEMENT_LENGTHREF = "lengthRef";
+    public static final String ELEMENT_LENGTHREF = GENERAL_LENGTHREF;
     public static final String ELEMENT_TYPE = "type";
     public static final String ELEMENT_CONDITION = "condition";
     public static final String ELEMENT_DYNAMIC = "dynamic";
@@ -61,6 +62,8 @@ public class Constants {
     public static final String BLOCK = "block";
     public static final String BLOCK_NAME = GENERAL_NAME;
     public static final String BLOCK_REF = "ref";
+    public static final String BLOCK_LENGTH = GENERAL_LENGTH;
+    public static final String BLOCK_LENGTHREF = GENERAL_LENGTHREF;
     public static final String BLOCK_BYTEORDER = "byteOrder";
 
     // sequence

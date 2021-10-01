@@ -96,6 +96,8 @@
             <!-- need to be validate in Java -->
             <xsd:attribute name="name" type="xsd:string" />
             <xsd:attribute name="ref" type="xsd:string" />
+            <xsd:attribute name="length" type="xsd:unsignedInt" />
+            <xsd:attribute name="lengthRef" type="xsd:string" />
             <xsd:attribute name="byteOrder" type="order" default="default" />
         </xsd:complexType>
     </xsd:element>
