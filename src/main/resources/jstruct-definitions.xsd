@@ -86,7 +86,7 @@
     </xsd:element>
 
     <xsd:element name="block">
-        <xsd:complexType mixed="true">
+        <xsd:complexType>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
                 <xsd:element ref="element" />
                 <xsd:element ref="padding" />
