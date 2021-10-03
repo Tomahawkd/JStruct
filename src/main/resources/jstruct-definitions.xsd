@@ -39,13 +39,6 @@
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="condition" final="restriction">
-        <xsd:restriction base="xsd:string">
-            <!-- TODO: add restriction -->
-            <xsd:pattern value="" />
-        </xsd:restriction>
-    </xsd:simpleType>
-
     <!-- definition elements -->
     <xsd:element name="element">
         <xsd:complexType>
@@ -58,8 +51,28 @@
             <xsd:attribute name="maxLength" type="xsd:unsignedInt" />
 
             <xsd:attribute name="type" type="type" use="required" />
-            <xsd:attribute name="condition" type="condition"/>
+            <xsd:attribute name="condition" type="xsd:string"/>
             <xsd:attribute name="dynamic" type="xsd:boolean" />
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="bitElement">
+        <xsd:complexType>
+            <xsd:attribute name="name" type="xsd:string" use="required" />
+            <xsd:attribute name="offset" type="xsd:unsignedInt" />
+            <xsd:attribute name="length" type="xsd:unsignedInt" />
+            <xsd:attribute name="type" type="type" use="required" />
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="bitmap">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="bitElement" maxOccurs="unbounded" />
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" />
+            <xsd:attribute name="offset" type="xsd:unsignedInt" />
+            <xsd:attribute name="length" type="xsd:unsignedInt" />
         </xsd:complexType>
     </xsd:element>
 
@@ -85,12 +98,28 @@
         </xsd:complexType>
     </xsd:element>
 
+    <xsd:element name="optional">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="element" />
+                <xsd:element ref="bitmap" />
+                <xsd:element ref="padding" />
+                <xsd:element ref="choices" />
+                <xsd:element ref="block" />
+            </xsd:choice>
+            <xsd:attribute name="condition" type="xsd:string" use="required" />
+            <xsd:attribute name="length" type="xsd:string" use="required" />
+        </xsd:complexType>
+    </xsd:element>
+
     <xsd:element name="block">
         <xsd:complexType>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
                 <xsd:element ref="element" />
+                <xsd:element ref="bitmap" />
                 <xsd:element ref="padding" />
                 <xsd:element ref="choices" />
+                <xsd:element ref="optional" />
                 <xsd:element ref="block" />
             </xsd:choice>
             <!-- need to be validate in Java -->
