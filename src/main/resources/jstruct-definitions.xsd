@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema targetNamespace="jstruct-definitions" xmlns="jstruct-definitions"
-           xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="2.1">
 
     <xsd:simpleType name="type" final="restriction">
         <xsd:restriction base="xsd:string">
@@ -101,6 +102,11 @@
     <xsd:element name="optional">
         <xsd:complexType>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <jxb:property name="options"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
                 <xsd:element ref="element" />
                 <xsd:element ref="bitmap" />
                 <xsd:element ref="padding" />
@@ -115,6 +121,11 @@
     <xsd:element name="block">
         <xsd:complexType>
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <jxb:property name="children"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
                 <xsd:element ref="element" />
                 <xsd:element ref="bitmap" />
                 <xsd:element ref="padding" />
@@ -145,6 +156,11 @@
     <xsd:element name="definition">
         <xsd:complexType>
             <xsd:choice maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <jxb:property name="content"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
                 <xsd:element ref="block" />
                 <xsd:element ref="sequence" />
             </xsd:choice>
