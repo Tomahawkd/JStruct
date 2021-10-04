@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition xmlns="jstruct-definitions"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="jstruct-definitions jstruct-definitions.xsd">
+
+    <block name="test1">
+        <element name="boolean" offset="0" length="1" type="boolean"/>
+        <element name="int4" offset="1" length="4" type="int4"/>
+    </block>
+    <block name="test2">
+        <element name="int8" offset="0" length="8" type="int8"/>
+    </block>
+
+    <sequence name="testSeq1">
+        <block ref="test1" />
+        <block ref="test2" />
+    </sequence>
+
+</definition>
+
