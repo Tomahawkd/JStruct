@@ -9,7 +9,6 @@
         <maven.compiler.target>8</maven.compiler.target>
         <jstruct.version>0.0.1-SNAPSHOT</jstruct.version>
         <bin.directory>bin/</bin.directory>
-        <jaxb.version>2.3.1</jaxb.version>
         <logger.version>2.14.1</logger.version>
     </properties>
 
@@ -28,18 +27,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${logger.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>${jaxb.version}</version>
         </dependency>
 
         <dependency>
