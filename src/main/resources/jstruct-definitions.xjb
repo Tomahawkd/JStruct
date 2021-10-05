@@ -2,7 +2,8 @@
 <jxb:bindings version="2.1"
         xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance">
+        xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+        xmlns:ci="http://jaxb.dev.java.net/plugin/code-injector">
 
     <jxb:bindings schemaLocation="jstruct-definitions.xsd" node="//xsd:schema">
         <!-- relocate package-->
@@ -21,31 +22,31 @@
         </jxb:bindings>
 
         <jxb:bindings node="//xsd:element[@name='bitElement']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='bitmap']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='block']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='choices']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='definition']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='element']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='optional']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='padding']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='sequence']/xsd:complexType">
-            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
     </jxb:bindings>
 </jxb:bindings>
