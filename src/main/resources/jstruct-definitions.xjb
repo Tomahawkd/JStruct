@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jxb:bindings version="2.1"
+        xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance">
+
+    <jxb:bindings schemaLocation="jstruct-definitions.xsd" node="//xsd:schema">
+        <!-- relocate package-->
+        <jxb:schemaBindings>
+            <jxb:package name="io.tomahawkd.jstruct.xml.types"/>
+        </jxb:schemaBindings>
+        <!-- rename fields -->
+        <jxb:bindings node="//xsd:element[@name='block']/xsd:complexType/xsd:choice">
+            <jxb:property name="children" />
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='definition']/xsd:complexType/xsd:choice">
+            <jxb:property name="content" />
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='optional']/xsd:complexType/xsd:choice">
+            <jxb:property name="content" />
+        </jxb:bindings>
+
+        <jxb:bindings node="//xsd:element[@name='bitElement']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='bitmap']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='block']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='choices']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='definition']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='element']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='optional']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='padding']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='sequence']/xsd:complexType">
+            <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlType</inheritance:implements>
+        </jxb:bindings>
+    </jxb:bindings>
+</jxb:bindings>

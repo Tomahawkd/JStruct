@@ -80,13 +80,27 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <extension>true</extension>
+                    <arguments>
+                        <argument>-Xinheritance</argument>
+                    </arguments>
                     <!-- The package of your generated sources -->
                     <packageName>io.tomahawkd.jstruct.xml.types</packageName>
                     <target>2.1</target>
                     <sources>
-                        <source>src/main/resources/</source>
+                        <source>src/main/resources/jstruct-definitions.xsd</source>
                     </sources>
+                    <xjbSources>
+                        <xjbSource>src/main/resources/jstruct-definitions.xjb</xjbSource>
+                    </xjbSources>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics</artifactId>
+                        <version>0.12.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
