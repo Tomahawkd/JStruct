@@ -3,6 +3,7 @@
         xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+        xmlns:simplify="http://jaxb2-commons.dev.java.net/basic/simplify"
         xmlns:ci="http://jaxb.dev.java.net/plugin/code-injector">
 
     <jxb:bindings schemaLocation="jstruct-definitions.xsd" node="//xsd:schema">
@@ -34,6 +35,9 @@
             <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='definition']/xsd:complexType">
+            <simplify:property name="content">
+                <simplify:as-element-property/>
+            </simplify:property>
             <inheritance:implements>io.tomahawkd.jstruct.xml.types.XmlLabelType</inheritance:implements>
         </jxb:bindings>
         <jxb:bindings node="//xsd:element[@name='element']/xsd:complexType">

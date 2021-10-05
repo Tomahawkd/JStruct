@@ -85,6 +85,7 @@
                     <arguments>
                         <argument>-Xinheritance</argument>
                         <argument>-Xinject-code</argument>
+                        <argument>-Xsimplify</argument>
                     </arguments>
                     <!-- The package of your generated sources -->
                     <packageName>io.tomahawkd.jstruct.xml.types</packageName>

@@ -25,13 +25,15 @@ public class StructXmlParserTest {
     public void parse() throws JAXBException {
         Definition d = parser.parseFromResource("basic_test.xml");
         Assert.assertNotNull(d);
-        List<Object> content = d.getContent();
-        Assert.assertEquals(3, content.size());
-        Assert.assertEquals(Block.class, content.get(0).getClass());
-        Assert.assertEquals(Block.class, content.get(1).getClass());
-        Assert.assertEquals(Sequence.class, content.get(2).getClass());
+        List<Block> blocks = d.getBlock();
+        Assert.assertEquals(2, blocks.size());
+        Assert.assertEquals(Block.class, blocks.get(0).getClass());
+        Assert.assertEquals(Block.class, blocks.get(1).getClass());
 
-        Block block1 = (Block) content.get(0);
+        List<Sequence> sequences = d.getSequence();
+        Assert.assertEquals(Sequence.class, sequences.get(0).getClass());
+
+        Block block1 = blocks.get(0);
         Assert.assertEquals("test1", block1.getName());
         List<Object> content1 = block1.getChildren();
         Assert.assertEquals(2, content1.size());
@@ -46,7 +48,7 @@ public class StructXmlParserTest {
         Assert.assertEquals(4L, element2.getLength().longValue());
         Assert.assertEquals(Type.INT_4, element2.getType());
 
-        Block block2 = (Block) content.get(1);
+        Block block2 = blocks.get(1);
         Assert.assertEquals("test2", block2.getName());
         List<Object> content2 = block2.getChildren();
         Assert.assertEquals(1, content2.size());
@@ -56,7 +58,7 @@ public class StructXmlParserTest {
         Assert.assertEquals(8L, element3.getLength().longValue());
         Assert.assertEquals(Type.INT_8, element3.getType());
 
-        Sequence sequence = (Sequence) content.get(2);
+        Sequence sequence = sequences.get(0);
         Assert.assertEquals("testSeq1", sequence.getName());
         Assert.assertEquals(2, sequence.getBlock().size());
         Block blockRef1 = sequence.getBlock().get(0);
@@ -65,4 +67,19 @@ public class StructXmlParserTest {
         Assert.assertEquals("test2", blockRef2.getRef());
     }
 
+
+    @Test
+    public void parse2() throws InvocationTargetException, CompileException {
+        ExpressionEvaluator e = new ExpressionEvaluator();
+        e.setParameters(new String[] {"$length$"}, new Class[] {int.class});
+        e.setExpressionType(boolean.class);
+        e.cook("$length$ > 5");
+        boolean result = (boolean) e.evaluate(new Object[] {6});
+        System.out.println(result);
+
+        e.setExpressionType(int.class);
+        e.cook("($length$ - 5) * 4");
+        int result2 = (int) e.evaluate(new Object[] {6});
+        System.out.println(result2);
+    }
 }
