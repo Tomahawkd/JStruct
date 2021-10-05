@@ -80,9 +80,11 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <addGeneratedAnnotation>true</addGeneratedAnnotation>
                     <extension>true</extension>
                     <arguments>
                         <argument>-Xinheritance</argument>
+                        <argument>-Xinject-code</argument>
                     </arguments>
                     <!-- The package of your generated sources -->
                     <packageName>io.tomahawkd.jstruct.xml.types</packageName>
