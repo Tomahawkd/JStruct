@@ -1,4 +1,4 @@
-package io.tomahawkd.jstruct.types;
+package io.tomahawkd.jstruct.parser;
 
 public class Range {
 

@@ -1,4 +1,4 @@
-package io.tomahawkd.jstruct.types;
+package io.tomahawkd.jstruct.parser;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,23 +8,22 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Map;
 
-public class SimpleDataBlock {
+public class SimpleDataSequence extends AbstractDataSequence {
 
-    private static final Logger logger = LogManager.getLogger(SimpleDataBlock.class);
+    private static final Logger logger = LogManager.getLogger(SimpleDataSequence.class);
 
-    private final String blockName;
     private final Map<String, Range> offsetMap;
     private final ByteBuffer buffer;
     private ByteOrder order = ByteOrder.nativeOrder();
 
-    public SimpleDataBlock(String blockName, Map<String, Range> offsetMap, byte[] data) {
-        this.blockName = blockName;
+    public SimpleDataSequence(String name, Map<String, Range> offsetMap, byte[] data) {
+        super(name);
         this.offsetMap = offsetMap;
         this.buffer = ByteBuffer.wrap(data);
     }
 
-    public SimpleDataBlock(String blockName, Map<String, Range> offsetMap, int capacity) {
-        this.blockName = blockName;
+    public SimpleDataSequence(String name, Map<String, Range> offsetMap, int capacity) {
+        super(name);
         this.offsetMap = offsetMap;
         this.buffer = ByteBuffer.allocate(capacity);
     }
@@ -33,7 +32,7 @@ public class SimpleDataBlock {
         this.order = order;
     }
 
-    public <T extends StructType> T getTypeByName(@NotNull String name, Class<T> type) {
+    public byte[] getBytesByName(@NotNull String name) {
         Range range = offsetMap.get(name);
         if (range == null) return null;
 
@@ -42,5 +41,8 @@ public class SimpleDataBlock {
                     String.format("The range(%d, %d) exceeds the buffer capacity (%d)",
                             range.start(), range.end(), buffer.capacity()));
 
+        byte[] bytes = new byte[range.length()];
+        buffer.order(order).get(bytes, range.start(), range.length());
+        return bytes;
     }
 }
